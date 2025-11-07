@@ -1,39 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Hello World</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: #0d1117;
-        }
-        .container {
-            text-align: center;
-            color: #c9d1d9;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .octocat {
-            width: 100px;
-            margin-bottom: 2rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pawana ทำบุญ บริจาค</title>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f6f8;
+  }
+  header {
+    background: #238636;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 200px;
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .card.selected {
+    border: 2px solid #238636;
+    transform: scale(1.05);
+  }
+  .card h3 {
+    margin: 0.5rem 0;
+  }
+  .card p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  textarea {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  button {
+    background: #238636;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+  }
+  button:hover { background: #2ea043; }
+
+  .ranking {
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+  .ranking h2 { text-align: center; margin-bottom: 1rem; }
+  .ranking ul { list-style: none; padding: 0; }
+  .ranking li {
+    background: #fff;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://github.githubassets.com/images/mona-loading-default.gif" alt="Octocat" class="octocat">
-        <h1>Hello World</h1>
-    </div>
+
+<header>Pawana ทำบุญ บริจาค</header>
+
+<div class="container" id="packages">
+  <!-- cards will be injected by JS -->
+</div>
+
+<div style="text-align:center; max-width:400px; margin:0 auto;">
+  <textarea id="wish" rows="3" placeholder="ใส่คำอธิษฐานของคุณ..."></textarea>
+  <button id="donateBtn">ส่งบุญ</button>
+</div>
+
+<div class="ranking">
+  <h2>Ranking ยอดบริจาค</h2>
+  <ul id="rankingList"></ul>
+</div>
+
+<script>
+const packages = [
+  { id:1, name:"Package 1", amount:50 },
+  { id:2, name:"Package 2", amount:100 },
+  { id:3, name:"Package 3", amount:200 },
+  { id:4, name:"Package 4", amount:300 },
+  { id:5, name:"Package 5", amount:500 },
+  { id:6, name:"Package 6", amount:1000 },
+];
+
+let ranking = [
+  { name:"วัดพระแก้ว", total:0 },
+  { name:"วัดอรุณ", total:0 },
+  { name:"วัดโพธิ์", total:0 },
+  { name:"วัดใหญ่", total:0 },
+];
+
+const container = document.getElementById('packages');
+
+packages.forEach(pkg => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.dataset.id = pkg.id;
+  card.innerHTML = `<h3>${pkg.name}</h3><p>฿${pkg.amount}</p>`;
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
+    card.classList.add('selected');
+  });
+  container.appendChild(card);
+});
+
+document.getElementById('donateBtn').addEventListener('click', () => {
+  const selected = document.querySelector('.card.selected');
+  const wish = document.getElementById('wish').value;
+  if(!selected){ alert("กรุณาเลือกแพ็กเกจก่อน!"); return; }
+
+  const pkg = packages.find(p => p.id == selected.dataset.id);
+  const randomIndex = Math.floor(Math.random()*ranking.length);
+  ranking[randomIndex].total += pkg.amount;
+
+  alert(`ส่งบุญ ${pkg.amount} บาทเรียบร้อย!\nคำอธิษฐาน: ${wish}`);
+  document.getElementById('wish').value = '';
+  selected.classList.remove('selected');
+
+  updateRanking();
+});
+
+function updateRanking(){
+  ranking.sort((a,b)=>b.total - a.total);
+  const ul = document.getElementById('rankingList');
+  ul.innerHTML = '';
+  ranking.forEach((r,i)=>{
+    ul.innerHTML += `<li>${i+1}. ${r.name} <span>฿${r.total}</span></li>`;
+  });
+}
+
+updateRanking();
+</script>
+
 </body>
 </html>
-
-//อัพโหลด ดูเล่นๆ บน git hub
