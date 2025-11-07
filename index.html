@@ -3,148 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pawana ทำบุญ & สายมู</title>
+<title>Pawana ทำบุญ & สายมู ครบเครื่อง</title>
 <style>
-body {
-  font-family:"Segoe UI",sans-serif;
-  margin:0;
-  background: linear-gradient(135deg,#fff3e0,#f1f8e9);
-  color:#333;
+body{
+  margin:0; font-family:"Segoe UI",sans-serif; background:#f2f4f8; color:#333;
 }
-header {
-  background:#ff6f00;
-  color:#fff;
-  text-align:center;
-  padding:1rem;
-  font-size:1.8rem;
-  font-weight:bold;
-  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+header{
+  background:#ff6f00; color:#fff; text-align:center; padding:1rem;
+  font-size:1.8rem; font-weight:bold; box-shadow:0 2px 6px rgba(0,0,0,0.15);
 }
-.package-slider {
-  display:flex;
-  overflow-x:auto;
-  padding:1rem;
-  gap:1rem;
-  scroll-behavior:smooth;
+section{padding:1rem; max-width:1200px; margin:0 auto;}
+h2{text-align:center;margin-bottom:1rem;}
+.package-slider, .temple-slider, .news-slider{
+  display:flex; overflow-x:auto; gap:1rem; padding-bottom:1rem; scroll-behavior:smooth;
 }
-.package-slider::-webkit-scrollbar{height:8px;}
-.package-slider::-webkit-scrollbar-thumb{background:#ff6f00;border-radius:4px;}
-.card {
-  flex:0 0 auto;
-  background:#fff;
-  border-radius:16px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.2);
-  width:200px;
-  padding:1rem;
-  text-align:center;
-  cursor:pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+.package-slider::-webkit-scrollbar, .temple-slider::-webkit-scrollbar, .news-slider::-webkit-scrollbar{height:8px;}
+.package-slider::-webkit-scrollbar-thumb, .temple-slider::-webkit-scrollbar-thumb, .news-slider::-webkit-scrollbar-thumb{background:#ff6f00;border-radius:4px;}
+.card{
+  flex:0 0 auto; background:#fff; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  width:200px; padding:1rem; text-align:center; cursor:pointer; transition: transform 0.3s, box-shadow 0.3s;
 }
-.card:hover{transform:scale(1.05);box-shadow:0 8px 16px rgba(0,0,0,0.3);}
+.card:hover{transform:scale(1.05); box-shadow:0 8px 16px rgba(0,0,0,0.3);}
 .card.selected{border:2px solid #ff6f00;}
-.card img{width:100%;border-radius:12px;}
-.card h3{margin:0.5rem 0;font-size:1.1rem;}
-.card p{margin:0.3rem 0;color:#555;font-size:0.9rem;}
-.form-section{
-  max-width:400px;
-  margin:1rem auto;
-  display:flex;
-  flex-direction:column;
-  gap:0.8rem;
+.card img{width:100%; border-radius:12px;}
+.card h3{margin:0.5rem 0; font-size:1.1rem;}
+.card p{margin:0.3rem 0;color:#555; font-size:0.9rem;}
+.form-card{
+  max-width:400px; margin:1rem auto; padding:1rem; background:#fff; border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2); display:flex; flex-direction:column; gap:0.8rem;
 }
-input, select, textarea, button{padding:0.6rem 0.8rem;border-radius:8px;border:1px solid #ccc;font-size:1rem;}
-button{background:#ff6f00;color:#fff;border:none;cursor:pointer;transition:0.2s;}
+input, select, textarea, button{
+  padding:0.6rem 0.8rem; border-radius:8px; border:1px solid #ccc; font-size:1rem;
+}
+button{background:#ff6f00; color:#fff; border:none; cursor:pointer; transition:0.2s;}
 button:hover{background:#ff8f00;}
-.ranking{
-  margin:2rem auto;
-  max-width:700px;
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
-}
-.ranking h2{text-align:center;margin-bottom:0.5rem;}
-.ranking ul{list-style:none;padding:0;}
+.ranking{margin:2rem 0;}
+.ranking ul{list-style:none;padding:0; display:flex; flex-direction:column; gap:0.5rem;}
 .ranking li{
-  background:#fff;
-  padding:0.8rem;
-  border-radius:12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  font-weight:500;
+  background:#fff; padding:0.8rem; border-radius:12px;
+  display:flex; justify-content:space-between; align-items:center;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1); font-weight:500;
 }
-.user-info{display:flex;align-items:center;gap:0.6rem;}
-.avatar{width:36px;height:36px;border-radius:50%;background:#ccc;display:inline-block;}
-.stars{display:inline-block;background:linear-gradient(90deg,#FFD700,#FFA500);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;margin-left:0.3rem;}
-.temple-card{flex:0 0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.2);width:180px;padding:1rem;text-align:center;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;}
-.temple-card:hover{transform:scale(1.05);box-shadow:0 8px 16px rgba(0,0,0,0.3);}
-.temple-card img{width:100%;border-radius:12px;}
-@media(max-width:500px){.card,.temple-card{width:160px;}.avatar{width:28px;height:28px;}}
+.user-info{display:flex; align-items:center; gap:0.6rem;}
+.avatar{width:36px;height:36px;border-radius:50%;background:#ccc; display:inline-block;}
+.stars{display:inline-block; background:linear-gradient(90deg,#FFD700,#FFA500); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; font-weight:bold; margin-left:0.3rem;}
+.news-card{flex:0 0 auto; background:#fff; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.2); width:250px; padding:1rem; text-align:left; transition:transform 0.3s;}
+.news-card:hover{transform:scale(1.02);}
+.news-card h4{margin:0.3rem 0;font-size:1rem;}
+.news-card p{font-size:0.9rem;color:#555;}
+@media(max-width:500px){.card,.temple-card,.news-card{width:160px;} .avatar{width:28px;height:28px;}}
 </style>
 </head>
 <body>
 
-<header>Pawana ทำบุญ & สายมู</header>
+<header>Pawana ทำบุญ & สายมู ครบเครื่อง</header>
 
-<h2 style="text-align:center;">แพ็กเกจยอดฮิต</h2>
+<section>
+<h2>แพ็กเกจยอดฮิต เติมบุญ เติมใจ</h2>
 <div class="package-slider" id="packages"></div>
+</section>
 
-<div class="form-section">
+<section>
+<h2>ฟอร์มบริจาค</h2>
+<div class="form-card">
   <input type="text" id="username" placeholder="ใส่ชื่อของคุณ">
-  <label for="templeSelect">เลือกวัด:</label>
   <select id="templeSelect">
-    <option value="">-- เลือกวัด --</option>
+    <option value="">-- เลือกวัด/ศาสนา --</option>
     <option value="วัดพระแก้ว">วัดพระแก้ว</option>
     <option value="วัดอรุณ">วัดอรุณ</option>
-    <option value="วัดโพธิ์">วัดโพธิ์</option>
-    <option value="วัดใหญ่">วัดใหญ่</option>
+    <option value="มัสยิดกลาง">มัสยิดกลาง</option>
+    <option value="โบสถ์ศักดิ์สิทธิ์">โบสถ์ศักดิ์สิทธิ์</option>
   </select>
-  <textarea id="wish" rows="3" placeholder="คำอธิษฐาน/คำขอพร..."></textarea>
-  <button id="donateBtn">ส่งบุญ</button>
+  <textarea id="wish" rows="3" placeholder="คำขอพร/อธิษฐาน"></textarea>
+  <button id="donateBtn">ส่งบุญ / เติมเหรียญ</button>
 </div>
+</section>
 
-<h2 style="text-align:center;">Ranking ผู้บริจาค</h2>
-<div class="ranking">
-  <ul id="userRanking"></ul>
-</div>
+<section class="ranking">
+<h2>Ranking สมาชิก</h2>
+<ul id="userRanking"></ul>
+</section>
 
-<h2 style="text-align:center;">Ranking วัดยอดนิยม</h2>
-<div class="package-slider" id="templeCards"></div>
+<section>
+<h2>Ranking วัดยอดนิยม & หลวงพ่อประจำวัด</h2>
+<div class="temple-slider" id="templeCards"></div>
+</section>
+
+<section>
+<h2>ข่าวสาร & ประกาศ</h2>
+<div class="news-slider" id="newsCards"></div>
+</section>
 
 <script>
 const packages=[
-  {id:1,name:"บุญเสริมดวง",amount:50,img:"https://picsum.photos/200/120?random=11"},
-  {id:2,name:"บุญสุขภาพ",amount:100,img:"https://picsum.photos/200/120?random=12"},
-  {id:3,name:"บุญร่ำรวย",amount:200,img:"https://picsum.photos/200/120?random=13"},
-  {id:4,name:"บุญความรัก",amount:300,img:"https://picsum.photos/200/120?random=14"},
-  {id:5,name:"บุญปัญญา",amount:500,img:"https://picsum.photos/200/120?random=15"},
-  {id:6,name:"บุญโชคลาภ",amount:1000,img:"https://picsum.photos/200/120?random=16"},
+  {id:1,name:"บุญเสริมดวง",amount:50,img:"https://picsum.photos/200/120?random=1"},
+  {id:2,name:"บุญสุขภาพ",amount:100,img:"https://picsum.photos/200/120?random=2"},
+  {id:3,name:"บุญร่ำรวย",amount:200,img:"https://picsum.photos/200/120?random=3"},
+  {id:4,name:"บุญความรัก",amount:300,img:"https://picsum.photos/200/120?random=4"},
+  {id:5,name:"บุญปัญญา",amount:500,img:"https://picsum.photos/200/120?random=5"},
+  {id:6,name:"บุญโชคลาภ",amount:1000,img:"https://picsum.photos/200/120?random=6"}
 ];
 
 const temples=[
-  {name:"วัดพระแก้ว",monk:"หลวงพ่อใหญ่",img:"https://picsum.photos/180/120?random=21"},
-  {name:"วัดอรุณ",monk:"หลวงพ่อทอง",img:"https://picsum.photos/180/120?random=22"},
-  {name:"วัดโพธิ์",monk:"หลวงพ่อสำเร็จ",img:"https://picsum.photos/180/120?random=23"},
-  {name:"วัดใหญ่",monk:"หลวงพ่อศักดิ์สิทธิ์",img:"https://picsum.photos/180/120?random=24"},
+  {name:"วัดพระแก้ว",monk:"หลวงพ่อใหญ่",img:"https://picsum.photos/180/120?random=11"},
+  {name:"วัดอรุณ",monk:"หลวงพ่อทอง",img:"https://picsum.photos/180/120?random=12"},
+  {name:"มัสยิดกลาง",monk:"อิมาม",img:"https://picsum.photos/180/120?random=13"},
+  {name:"โบสถ์ศักดิ์สิทธิ์",monk:"บาทหลวง",img:"https://picsum.photos/180/120?random=14"},
 ];
 
-let templeRanking={"วัดพระแก้ว":0,"วัดอรุณ":0,"วัดโพธิ์":0,"วัดใหญ่":0};
+const newsData=[
+  {title:"ข่าวทำบุญประจำสัปดาห์",content:"แจกฟรีคัมภีร์คำอธิษฐานออนไลน์ และวิธีทำบุญอย่างถูกวิธี"},
+  {title:"โปรโมชันเติมเหรียญบุญ",content:"เติมเหรียญวันนี้ รับโบนัส 10% เพิ่มบุญให้เต็มใจ"},
+  {title:"วิธีเสริมดวงสำหรับสายมู",content:"เทคนิคการเลือกวัดและแพ็กเกจบุญให้เหมาะกับวันเกิดและราศี"}
+];
+
+let templeRanking={"วัดพระแก้ว":0,"วัดอรุณ":0,"มัสยิดกลาง":0,"โบสถ์ศักดิ์สิทธิ์":0};
 let userRanking={};
 
+// render package
 const container=document.getElementById('packages');
 packages.forEach(pkg=>{
   const card=document.createElement('div');
-  card.className='card';
-  card.dataset.id=pkg.id;
+  card.className='card'; card.dataset.id=pkg.id;
   card.innerHTML=`<img src="${pkg.img}" alt="${pkg.name}"><h3>${pkg.name}</h3><p>฿${pkg.amount}</p>`;
-  card.addEventListener('click',()=>{
-    document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected'));
-    card.classList.add('selected');
-  });
+  card.addEventListener('click',()=>{document.querySelectorAll('.card').forEach(c=>c.classList.remove('selected')); card.classList.add('selected');});
   container.appendChild(card);
 });
 
+// render news
+const newsContainer=document.getElementById('newsCards');
+newsData.forEach(n=>{
+  const card=document.createElement('div'); card.className='news-card';
+  card.innerHTML=`<h4>${n.title}</h4><p>${n.content}</p>`;
+  newsContainer.appendChild(card);
+});
+
+// donate button
 document.getElementById('donateBtn').addEventListener('click',()=>{
   const selectedCard=document.querySelector('.card.selected');
   const username=document.getElementById('username').value.trim();
@@ -153,12 +147,11 @@ document.getElementById('donateBtn').addEventListener('click',()=>{
 
   if(!selectedCard){ alert("เลือกแพ็กเกจก่อน"); return;}
   if(!username){ alert("ใส่ชื่อของคุณ"); return;}
-  if(!temple){ alert("เลือกวัด"); return;}
+  if(!temple){ alert("เลือกวัด/ศาสนา"); return;}
 
   const pkg=packages.find(p=>p.id==selectedCard.dataset.id);
   templeRanking[temple]+=pkg.amount;
-  if(userRanking[username]) userRanking[username]+=pkg.amount;
-  else userRanking[username]=pkg.amount;
+  userRanking[username]=userRanking[username]? userRanking[username]+pkg.amount: pkg.amount;
 
   alert(`ผู้บริจาค ${username} ส่ง ${pkg.amount} บาทไป ${temple}\nคำขอพร: ${wish}`);
 
@@ -166,38 +159,28 @@ document.getElementById('donateBtn').addEventListener('click',()=>{
   document.getElementById('wish').value='';
   selectedCard.classList.remove('selected');
 
-  updateUserRanking();
-  updateTempleCards();
+  updateUserRanking(); updateTempleCards();
 });
 
 function updateUserRanking(){
-  const list=document.getElementById('userRanking');
-  list.innerHTML='';
-  Object.entries(userRanking)
-    .sort((a,b)=>b[1]-a[1])
-    .forEach(([name,total],i)=>{
-      const stars=Math.min(5,Math.floor(total/200));
-      const starHTML='<span class="stars">'+'★'.repeat(stars)+'</span>';
-      list.innerHTML+=`<li><div class="user-info"><span class="avatar"></span>${name}</div><span>฿${total} ${starHTML}</span></li>`;
-    });
+  const list=document.getElementById('userRanking'); list.innerHTML='';
+  Object.entries(userRanking).sort((a,b)=>b[1]-a[1]).forEach(([name,total],i)=>{
+    const stars=Math.min(5,Math.floor(total/200));
+    const starHTML='<span class="stars">'+ '★'.repeat(stars)+'</span>';
+    list.innerHTML+=`<li><div class="user-info"><span class="avatar"></span>${name}</div><span>฿${total} ${starHTML}</span></li>`;
+  });
 }
 
 function updateTempleCards(){
-  const container=document.getElementById('templeCards');
-  container.innerHTML='';
-  temples
-    .sort((a,b)=>templeRanking[b.name]-templeRanking[a.name])
-    .forEach(t=>{
-      const card=document.createElement('div');
-      card.className='temple-card';
-      card.innerHTML=`<img src="${t.img}" alt="${t.name}"><h3>${t.name}</h3><p>ยอดรวม: ฿${templeRanking[t.name]}</p><p>หลวงพ่อ: ${t.monk}</p>`;
-      container.appendChild(card);
-    });
+  const container=document.getElementById('templeCards'); container.innerHTML='';
+  temples.sort((a,b)=>templeRanking[b.name]-templeRanking[a.name]).forEach(t=>{
+    const card=document.createElement('div'); card.className='card';
+    card.innerHTML=`<img src="${t.img}" alt="${t.name}"><h3>${t.name}</h3><p>ยอดรวม: ฿${templeRanking[t.name]}</p><p>หลวงพ่อ/ผู้นำศาสนา: ${t.monk}</p>`;
+    container.appendChild(card);
+  });
 }
 
-updateUserRanking();
-updateTempleCards();
+updateUserRanking(); updateTempleCards();
 </script>
-
 </body>
 </html>
